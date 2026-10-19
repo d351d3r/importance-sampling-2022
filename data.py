@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import gdown
 
+
 class Dataloader:
     def __init__(
             self,
@@ -20,7 +21,7 @@ class Dataloader:
         feat_idx = []
         target_idx = []
         for i in range(self.first_pred, self.series.shape[0], self.step_size):
-            feat_idx.append(range(i-self.horizon-self.window_size+1, i-self.horizon+1))
+            feat_idx.append(range(i - self.horizon - self.window_size + 1, i - self.horizon + 1))
             target_idx.append(i)
         self.feat_idx = feat_idx
         self.target_idx = target_idx

@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+
 from data import (
     stocks_returns,
     commodities_returns,
@@ -12,6 +13,12 @@ from models import HistoricalSimulation, RiskMetrics
 
 class TestData:
     def test_stocks_returns(self):
+        """
+        Back testing on stocks:
+        AAPL, AMD, AMZN, GOOGL, INTC, META, MSFT, MU, NVDA, TSLA
+        from date='09/02/2022' to date='09/07/2022'
+
+        """
         assets = ['AAPL']
         weights = [1.]
         returns = stocks_returns(assets, weights, from_date='09/02/2022', to_date='09/07/2022')
@@ -40,6 +47,13 @@ class TestData:
         assert np.allclose(returns, test_returns, atol=0.0001)
 
     def test_commodities_returns(self):
+        """
+        Back testing on commodities:
+        'Brent Oil', 'Crude Oil WTI', 'Natural Gas',
+            'Heating Oil', 'Gold', 'Silver', 'Copper',
+            'US Coffee C', 'US Corn'
+        from_date='09/02/2022', to_date='09/07/2022'
+        """
         assets = [
             'Brent Oil', 'Crude Oil WTI', 'Natural Gas',
             'Heating Oil', 'Gold', 'Silver', 'Copper',
@@ -124,3 +138,4 @@ class TestModels:
         target = np.array(target)
         assert np.isclose(quantile_loss(var, target, alpha), 0.0036, atol=0.0001)
         assert pof_test(var, target, alpha) > 0.05
+        assert if_test(var, target) > 0.05

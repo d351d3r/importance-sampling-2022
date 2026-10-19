@@ -6,3 +6,7 @@ gdown
 sphinx
 livereload
 myst-parser
+pydata-sphinx-theme
+numpydoc
+texext
+nb2plots

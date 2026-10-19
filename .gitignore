@@ -5,10 +5,19 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+*~
+.DS_Store
 # C extensions
 *.so
 
+# Generated while building documentation.
+doc/auto_examples
+doc/modules
+doc/reference/generated
+doc/reference/algorithms/generated
+doc/reference/classes/generated
+doc/reference/readwrite/generated
+doc/path.to.file
 # Distribution / packaging
 .Python
 build/
